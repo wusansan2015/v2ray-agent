@@ -797,7 +797,7 @@ nginxBlog() {
 		fi
 	else
 		rm -rf /usr/share/nginx/html
-		wget -q -P /usr/share/nginx https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html1.zip >/dev/null
+		wget -q -P /usr/share/nginx https://raw.githubusercontent.com/wusansan2015/v2ray-agent/master/fodder/blog/unable/html2.zip >/dev/null
 		unzip -o /usr/share/nginx/html1.zip -d /usr/share/nginx/html >/dev/null
 		rm -f /usr/share/nginx/html1.zip*
 		echoContent green " ---> 添加伪装站点成功"
@@ -2945,7 +2945,7 @@ EOF
 # 脚本快捷方式
 aliasInstall() {
 
-	if [[ -f "$HOME/install.sh" ]] && [[ -d "/etc/v2ray-agent" ]] && grep <$HOME/install.sh -q "作者：mack-a"; then
+	if [[ -f "$HOME/install.sh" ]] && [[ -d "/etc/v2ray-agent" ]] && grep <$HOME/install.sh -q "1"; then
 		mv "$HOME/install.sh" /etc/v2ray-agent/install.sh
 		if [[ -d "/usr/bin/" ]] && [[ ! -f "/usr/bin/vasma" ]]; then
 			ln -s /etc/v2ray-agent/install.sh /usr/bin/vasma
@@ -3088,7 +3088,7 @@ dokodemoDoorUnblockNetflix() {
 	echoContent skyBlue "\n功能 1/${totalProgress} : 任意门落地机解锁Netflix"
 	echoContent red "\n=============================================================="
 	echoContent yellow "# 注意事项"
-	echoContent yellow "任意门解锁详解，请查看此文章[https://github.com/mack-a/v2ray-agent/blob/master/documents/netflix/dokodemo-unblock_netflix.md]\n"
+	echoContent yellow "任意门解锁详解，请查看此文章[https://github.com/wusansan2015/v2ray-agent/blob/master/documents/netflix/dokodemo-unblock_netflix.md]\n"
 
 	echoContent yellow "1.添加出站"
 	echoContent yellow "2.添加入站"
