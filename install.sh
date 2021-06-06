@@ -790,7 +790,7 @@ nginxBlog() {
 		read -r -p "检测到安装伪装站点，是否需要重新安装[y/n]：" nginxBlogInstallStatus
 		if [[ "${nginxBlogInstallStatus}" == "y" ]]; then
 			rm -rf /usr/share/nginx/html
-			wget -q -P /usr/share/nginx https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html1.zip >/dev/null
+			wget -q -P /usr/share/nginx https://raw.githubusercontent.com/wusansan2015/v2ray-agent/master/fodder/blog/unable/html2.zip >/dev/null
 			unzip -o /usr/share/nginx/html1.zip -d /usr/share/nginx/html >/dev/null
 			rm -f /usr/share/nginx/html.zip*
 			echoContent green " ---> 添加伪装站点成功"
@@ -2179,7 +2179,7 @@ defaultBase64Code() {
 vless://${VLESSID}@${host}:${port}?encryption=none&security=xtls&type=tcp&host=${host}&headerType=none&flow=xtls-rprx-direct#${VLESSEmail}
 EOF
 			echoContent yellow " ---> 二维码 VLESS(VLESS+TCP+TLS/xtls-rprx-direct)"
-			echoContent green "    https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=vless%3A%2F%2F${VLESSID}%40${host}%3A${port}%3F${encryption}%3Dnone%26security%3Dxtls%26type%3Dtcp%26${host}%3D${host}%26headerType%3Dnone%26flow%3Dxtls-rprx-direct%23${VLESSEmail}\n"
+			echoContent green "Hello"
 
 			echoContent skyBlue "----------------------------------------------------------------------------------"
 
@@ -2192,7 +2192,7 @@ EOF
 vless://${VLESSID}@${host}:${port}?encryption=none&security=xtls&type=tcp&host=${host}&headerType=none&flow=xtls-rprx-splice#${VLESSEmail}
 EOF
 			echoContent yellow " ---> 二维码 VLESS(VLESS+TCP+TLS/xtls-rprx-splice)"
-			echoContent green "    https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=vless%3A%2F%2F${VLESSID}%40${host}%3A${port}%3F${encryption}%3Dnone%26security%3Dxtls%26type%3Dtcp%26${host}%3D${host}%26headerType%3Dnone%26flow%3Dxtls-rprx-splice%23${VLESSEmail}\n"
+			echoContent green "Hello"
 
 		elif [[ "${coreInstallType}" == "2" || "${coreInstallType}" == "3" ]]; then
 			echoContent yellow " ---> 通用格式(VLESS+TCP+TLS)"
@@ -2205,7 +2205,7 @@ EOF
 vless://${VLESSID}@${host}:${port}?security=tls&encryption=none&host=${host}&headerType=none&type=tcp#${VLESSEmail}
 EOF
 			echoContent yellow " ---> 二维码 VLESS(VLESS+TCP+TLS)"
-			echoContent green "    https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=vless%3a%2f%2f${VLESSID}%40${host}%3a${port}%3fsecurity%3dtls%26encryption%3dnone%26host%3d${host}%26headerType%3dnone%26type%3dtcp%23${VLESSEmail}\n"
+			echoContent green "Hello"
 		fi
 
 	elif [[ "${type}" == "vmessws" ]]; then
@@ -2222,7 +2222,7 @@ EOF
 		cat <<EOF >>"/etc/v2ray-agent/subscribe_tmp/${subAccount}"
 vmess://${qrCodeBase64Default}
 EOF
-		echoContent green "    https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=vmess://${qrCodeBase64Default}\n"
+		echoContent green " Hello"
 
 	elif [[ "${type}" == "vmesstcp" ]]; then
 
@@ -2238,7 +2238,7 @@ EOF
 vmess://${qrCodeBase64Default}
 EOF
 		echoContent yellow " ---> 二维码 vmess(VMess+TCP+TLS)"
-		echoContent green "    https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=vmess://${qrCodeBase64Default}\n"
+		echoContent green "Hello"
 
 	elif [[ "${type}" == "vlessws" ]]; then
 		local VLESSID
@@ -2257,7 +2257,7 @@ vless://${VLESSID}@${add}:${port}?encryption=none&security=tls&type=ws&host=${ho
 EOF
 
 		echoContent yellow " ---> 二维码 VLESS(VLESS+TCP+TLS/XTLS)"
-		echoContent green "    https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=vless%3A%2F%2F${VLESSID}%40${add}%3A${port}%3Fencryption%3Dnone%26security%3Dtls%26type%3Dws%26host%3D${host}%26path%3D%252f${path}%23${VLESSEmail}"
+		echoContent green "Hello"
 
 	elif [[ "${type}" == "vlessgrpc" ]]; then
 		local VLESSID
@@ -2275,7 +2275,7 @@ EOF
 vless://${VLESSID}@${add}:${port}?encryption=none&security=tls&type=grpc&host=${host}&path=${path}#${VLESSEmail}
 EOF
 		echoContent yellow " ---> 二维码 VLESS(VLESS+gRPC+TLS)"
-		echoContent green "    https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=vless%3A%2F%2F${VLESSID}%40${add}%3A${port}%3Fencryption%3Dnone%26security%3Dtls%26type%3Dgrpc%26host%3D${host}%26path%3D${path}%23${VLESSEmail}"
+		echoContent green "Hello"
 
 	elif [[ "${type}" == "trojan" ]]; then
 		# URLEncode
@@ -2286,7 +2286,7 @@ EOF
 trojan://${id}@${host}:${port}?peer=${host}&sni=${host}#${host}_trojan
 EOF
 		echoContent yellow " ---> 二维码 Trojan(TLS)"
-		echoContent green "    https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=trojan%3a%2f%2f${id}%40${host}%3a${port}%3fpeer%3d${host}%26sni%3d${host}%23${host}_trojan\n"
+		echoContent green "Hello"
 
 	elif [[ "${type}" == "trojangows" ]]; then
 		# URLEncode
@@ -2297,7 +2297,7 @@ EOF
 trojan://${id}@${add}:${port}?allowInsecure=0&&peer=${host}&sni=${host}&plugin=obfs-local;obfs=websocket;obfs-host=${host};obfs-uri=${path}#${host}_trojan_ws
 EOF
 		echoContent yellow " ---> 二维码 Trojan-Go(WS+TLS) Shadowrocket"
-		echoContent green "    https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=trojan%3a%2f%2f${id}%40${add}%3a${port}%3fallowInsecure%3d0%26peer%3d${host}%26plugin%3dobfs-local%3bobfs%3dwebsocket%3bobfs-host%3d${host}%3bobfs-uri%3d${path}%23${host}_trojan_ws\n"
+		echoContent green "Hello"
 
 		path=$(echo "${path}" | awk -F "[/]" '{print $2}')
 		echoContent yellow " ---> Trojan-Go(WS+TLS) QV2ray"
@@ -2442,9 +2442,9 @@ updateNginxBlog() {
 		rm -rf /usr/share/nginx/html
 
 		if wget --help | grep -q show-progress; then
-			wget -c -q --show-progress -P /usr/share/nginx "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${selectInstallNginxBlogType}.zip" >/dev/null
+			wget -c -q --show-progress -P /usr/share/nginx "https://raw.githubusercontent.com/wusansan2015/v2ray-agent/master/fodder/blog/unable/html2.zip" >/dev/null
 		else
-			wget -c -P /usr/share/nginx "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/fodder/blog/unable/html${selectInstallNginxBlogType}.zip" >/dev/null
+			wget -c -P /usr/share/nginx "https://raw.githubusercontent.com/wusansan2015/v2ray-agent/master/fodder/blog/unable/html2.zip" >/dev/null
 		fi
 
 		unzip -o "/usr/share/nginx/html${selectInstallNginxBlogType}.zip" -d /usr/share/nginx/html >/dev/null
@@ -2778,14 +2778,6 @@ addUser() {
 		echo "${vmessWsResult}" | jq . >${configPath}05_VMess_WS_inbounds.json
 	fi
 
-	if echo ${currentInstallProtocolType} | grep -q 5; then
-		local vmessUsers="${users//\"flow\":\"xtls-rprx-direct\"\,/}"
-
-		local vlessGRPCResult
-		vlessGRPCResult=$(jq -r '.inbounds[0].settings.clients += ['${vmessUsers}']' ${configPath}06_VLESS_gRPC_inbounds.json)
-		echo "${vlessGRPCResult}" | jq . >${configPath}06_VLESS_gRPC_inbounds.json
-	fi
-
 	if echo ${currentInstallProtocolType} | grep -q 4; then
 		local trojanResult
 		trojanResult=$(jq -r '.password += ['${trojanGoUsers}']' ${configPath}../../trojan/config_full.json)
@@ -2833,12 +2825,6 @@ removeUser() {
 			echo "${vmessWSResult}" | jq . >${configPath}05_VMess_WS_inbounds.json
 		fi
 
-		if echo ${currentInstallProtocolType} | grep -q 5; then
-			local vlessGRPCResult
-			vlessGRPCResult=$(jq -r 'del(.inbounds[0].settings.clients['${delUserIndex}'])' ${configPath}06_VLESS_gRPC_inbounds.json)
-			echo "${vlessGRPCResult}" | jq . >${configPath}06_VLESS_gRPC_inbounds.json
-		fi
-
 		if echo ${currentInstallProtocolType} | grep -q 4; then
 			local trojanResult
 			trojanResult=$(jq -r 'del(.password['${delUserIndex}'])' ${configPath}../../trojan/config_full.json)
@@ -2854,9 +2840,9 @@ updateV2RayAgent() {
 	echoContent skyBlue "\n进度  $1/${totalProgress} : 更新v2ray-agent脚本"
 	rm -rf /etc/v2ray-agent/install.sh
 	if wget --help | grep -q show-progress; then
-		wget -c -q --show-progress -P /etc/v2ray-agent/ -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh"
+		wget -c -q --show-progress -P /etc/v2ray-agent/ -N --no-check-certificate "https://raw.githubusercontent.com/wusansan2015/v2ray-agent/master/install.sh"
 	else
-		wget -c -q -P /etc/v2ray-agent/ -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh"
+		wget -c -q -P /etc/v2ray-agent/ -N --no-check-certificate "https://raw.githubusercontent.com/wusansan2015/v2ray-agent/master/install.sh"
 	fi
 
 	sudo chmod 700 /etc/v2ray-agent/install.sh
@@ -2866,7 +2852,7 @@ updateV2RayAgent() {
 	echoContent yellow " ---> 请手动执行[vasma]打开脚本"
 	echoContent green " ---> 当前版本:${version}\n"
 	echoContent yellow "如更新不成功，请手动执行下面命令\n"
-	echoContent skyBlue "wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh"
+	echoContent skyBlue "wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/wusansan2015/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh"
 	echo
 	exit 0
 }
@@ -3764,7 +3750,7 @@ subscribe() {
 				echoContent skyBlue "--------------------------------------------------------------"
 				echoContent yellow "email：$(echo "${email}" | awk -F "[_]" '{print $1}')\n"
 				echoContent yellow "url：https://${currentHost}/s/${email}\n"
-				echoContent yellow "在线二维码：https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https://${currentHost}/s/${email}\n"
+				echoContent yellow "Hello"
 				echo "https://${currentHost}/s/${email}" | qrencode -s 10 -m 1 -t UTF8
 				echoContent skyBlue "--------------------------------------------------------------"
 			done
@@ -3779,7 +3765,7 @@ menu() {
 	cd "$HOME" || exit
 	echoContent red "\n=============================================================="
 	echoContent green "作者：mack-a"
-	echoContent green "当前版本：v2.4.39"
+	echoContent green "当前版本：v2.4.38"
 	echoContent green "Github：https://github.com/mack-a/v2ray-agent"
 	echoContent green "描述：八合一共存脚本\c"
 	showInstallStatus
