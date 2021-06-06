@@ -791,15 +791,15 @@ nginxBlog() {
 		if [[ "${nginxBlogInstallStatus}" == "y" ]]; then
 			rm -rf /usr/share/nginx/html
 			wget -q -P /usr/share/nginx https://raw.githubusercontent.com/wusansan2015/v2ray-agent/master/fodder/blog/unable/html2.zip >/dev/null
-			unzip -o /usr/share/nginx/html1.zip -d /usr/share/nginx/html >/dev/null
-			rm -f /usr/share/nginx/html.zip*
+			unzip -o /usr/share/nginx/html2.zip -d /usr/share/nginx/html >/dev/null
+			rm -f /usr/share/nginx/htm2.zip*
 			echoContent green " ---> 添加伪装站点成功"
 		fi
 	else
 		rm -rf /usr/share/nginx/html
 		wget -q -P /usr/share/nginx https://raw.githubusercontent.com/wusansan2015/v2ray-agent/master/fodder/blog/unable/html2.zip >/dev/null
-		unzip -o /usr/share/nginx/html1.zip -d /usr/share/nginx/html >/dev/null
-		rm -f /usr/share/nginx/html1.zip*
+		unzip -o /usr/share/nginx/html2.zip -d /usr/share/nginx/html >/dev/null
+		rm -f /usr/share/nginx/html2.zip*
 		echoContent green " ---> 添加伪装站点成功"
 	fi
 
