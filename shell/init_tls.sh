@@ -97,18 +97,18 @@ installTools(){
 }
 # 恢复配置
 resetNginxConfig(){
-    `cp -Rrf /tmp/mack-a/nginx/nginx.conf /etc/nginx/nginx.conf`
-    rm -rf /etc/nginx/conf.d/5NX2O9XQKP.conf
+    `cp -Rrf /tmp/wusansan2015/nginx/nginx.conf /etc/nginx/nginx.conf`
+    rm -rf /etc/nginx/conf.d/7NX4O2XQKP.conf
     echoColor green "\n恢复配置完毕"
 }
 # 备份
 bakConfig(){
-    mkdir -p /tmp/mack-a/nginx
-    `cp -Rrf /etc/nginx/nginx.conf /tmp/mack-a/nginx/nginx.conf`
+    mkdir -p /tmp/wusansan2015/nginx
+    `cp -Rrf /etc/nginx/nginx.conf /tmp/wusansan2015/nginx/nginx.conf`
 }
 # 安装证书
 installTLS(){
-    echoColor yellow "请输入域名【例:blog.v2ray-agent.com】："
+    echoColor yellow "请输入域名【例:blog.com】："
     read domain
     if [[ -z ${domain} ]]
     then
@@ -120,11 +120,11 @@ installTLS(){
     # 替换原始文件中的域名
     if [[ ! -z `cat /etc/nginx/nginx.conf|grep -v grep|grep "${domain}"` ]]
     then
-        sed -i "s/${domain}/X655Y0M9UM9/g"  `grep "${domain}" -rl /etc/nginx/nginx.conf`
+        sed -i "s/${domain}/X700Y0M9UM9/g"  `grep "${domain}" -rl /etc/nginx/nginx.conf`
     fi
 
     touch /etc/nginx/conf.d/6GFV1ES52V2.conf
-    echo "server {listen 80;server_name ${domain};root /usr/share/nginx/html;location ~ /.well-known {allow all;}location /test {return 200 '5NX2O9XQKP';}}" > /etc/nginx/conf.d/5NX2O9XQKP.conf
+    echo "server {listen 80;server_name ${domain};root /usr/share/nginx/html;location ~ /.well-known {allow all;}location /test {return 200 '7NX4O2XQKP';}}" > /etc/nginx/conf.d/7NX4O2XQKP.conf
     nginxStatus=1;
     if [[ ! -z `ps -ef|grep -v grep|grep nginx` ]]
     then
@@ -136,7 +136,7 @@ installTLS(){
         nginx
     fi
     echoColor yellow "\n验证域名以及服务器是否可用"
-    if [[ ! -z `curl -s ${domain}/test|grep 5NX2O9XQKP` ]]
+    if [[ ! -z `curl -s ${domain}/test|grep 7NX4O2XQKP` ]]
     then
         ps -ef|grep -v grep|grep nginx|awk '{print $2}'|xargs kill -9
         sleep 0.5
@@ -148,21 +148,21 @@ installTLS(){
         exit 0;
     fi
     sudo ~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 >/dev/null
-    ~/.acme.sh/acme.sh --installcert -d ${domain} --fullchainpath /tmp/mack-a/nginx/${domain}.crt --keypath /tmp/mack-a/nginx/${domain}.key --ecc >/dev/null
-    if [[ -z `cat /tmp/mack-a/nginx/${domain}.key` ]]
+    ~/.acme.sh/acme.sh --installcert -d ${domain} --fullchainpath /tmp/wusansan2015/nginx/${domain}.crt --keypath /tmp/wusansan2015/nginx/${domain}.key --ecc >/dev/null
+    if [[ -z `cat /tmp/wusansan2015/nginx/${domain}.key` ]]
     then
         echoColor red "证书key生成失败，请重新运行"
         resetNginxConfig
         exit
-    elif [[ -z `cat /tmp/mack-a/nginx/${domain}.crt` ]]
+    elif [[ -z `cat /tmp/wusansan2015/nginx/${domain}.crt` ]]
     then
         echoColor red "证书crt生成失败，请重新运行"
         resetNginxConfig
         exit
     fi
     echoColor green "证书生成成功"
-    echoColor green "证书目录/tmp/mack-a/nginx"
-    ls /tmp/mack-a/nginx
+    echoColor green "证书目录/tmp/wusansan2015/nginx"
+    ls /tmp/wusansan2015/nginx
 
     resetNginxConfig
     if [[ ${nginxStatus} = 2  ]]
@@ -185,7 +185,7 @@ init(){
     echoColor green "   9.下个版本会加入通配符证书生成[todo]"
     echoColor green "   10.可以生成多个不同域名的证书[包含子域名]，具体速率请查看[https://letsencrypt.org/zh-cn/docs/rate-limits/]"
     echoColor green "   11.兼容Centos、Ubuntu、Debian"
-    echoColor green "   12.Github[https://github.com/mack-a]"
+    echoColor green "   12.Github[https://github.com/wusansan2015]"
     echoColor red "=============================="
     echoColor yellow "请输入[y]执行脚本，[任意]结束:"
     read isExecStatus
