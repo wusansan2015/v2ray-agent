@@ -6,7 +6,7 @@
   },
   "experimental": {
     "clash_api": {
-      "external_controller": "127.0.0.1:9090",
+      "external_controller": "127.0.0.1:9095",
       "external_ui": "metacubexd",
       "external_ui_download_url": "https://gh-proxy.com/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
       "external_ui_download_detour": "direct",
@@ -95,14 +95,14 @@
         "http_proxy": {
           "enabled": true,
           "server": "127.0.0.1",
-          "server_port": 1082
+          "server_port": 1085
         }
       }
     },
     {
       "type": "mixed",
       "listen": "127.0.0.1",
-      "listen_port": 1082,
+      "listen_port": 1085,
       "sniff": true,
       "users": []
     },
@@ -110,7 +110,7 @@
       "type": "socks",
       "tag": "socks-in",
       "listen": "127.0.0.1",
-      "listen_port": 7888
+      "listen_port": 7889
     }
   ],
   "outbounds": [
