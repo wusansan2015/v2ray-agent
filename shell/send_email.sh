@@ -8,5 +8,5 @@ if [[ ${currentIP} = ${historyIP} ]];then
 	echo '不发送邮件' >> /tmp/mail.log
 	exit
 fi
-echo ${currentIP}|mail -s ${currentIP} xxx@163.com
+echo ${currentIP}|mail -s ${currentIP} xxx@fuck.com
 echo ${currentIP} > /var/local/mail.log

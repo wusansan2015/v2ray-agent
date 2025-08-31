@@ -98,7 +98,7 @@ installTools(){
 # 恢复配置
 resetNginxConfig(){
     `cp -Rrf /tmp/mack-a/nginx/nginx.conf /etc/nginx/nginx.conf`
-    rm -rf /etc/nginx/conf.d/5NX2O9XQKP.conf
+    rm -rf /etc/nginx/conf.d/6NX3O9ZQKP.conf
     echoColor green "\n恢复配置完毕"
 }
 # 备份
@@ -120,11 +120,11 @@ installTLS(){
     # 替换原始文件中的域名
     if [[ ! -z `cat /etc/nginx/nginx.conf|grep -v grep|grep "${domain}"` ]]
     then
-        sed -i "s/${domain}/X655Y0M9UM9/g"  `grep "${domain}" -rl /etc/nginx/nginx.conf`
+        sed -i "s/${domain}/X244Y0M9UM9/g"  `grep "${domain}" -rl /etc/nginx/nginx.conf`
     fi
 
-    touch /etc/nginx/conf.d/6GFV1ES52V2.conf
-    echo "server {listen 80;server_name ${domain};root /usr/share/nginx/html;location ~ /.well-known {allow all;}location /test {return 200 '5NX2O9XQKP';}}" > /etc/nginx/conf.d/5NX2O9XQKP.conf
+    touch /etc/nginx/conf.d/7GFV1ES52V4.conf
+    echo "server {listen 80;server_name ${domain};root /usr/share/nginx/html;location ~ /.well-known {allow all;}location /test {return 200 '6NX3O9ZQKP';}}" > /etc/nginx/conf.d/6NX3O9ZQKP.conf
     nginxStatus=1;
     if [[ ! -z `ps -ef|grep -v grep|grep nginx` ]]
     then
@@ -136,7 +136,7 @@ installTLS(){
         nginx
     fi
     echoColor yellow "\n验证域名以及服务器是否可用"
-    if [[ ! -z `curl -s ${domain}/test|grep 5NX2O9XQKP` ]]
+    if [[ ! -z `curl -s ${domain}/test|grep 6NX3O9ZQKP` ]]
     then
         ps -ef|grep -v grep|grep nginx|awk '{print $2}'|xargs kill -9
         sleep 0.5
